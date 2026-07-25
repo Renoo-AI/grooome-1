@@ -12,6 +12,7 @@ import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import Home from "@/pages/Home";
 import ServicesPage from "@/pages/Services";
 import BookingPage from "@/pages/Booking";
+import NotFound from "@/pages/NotFound";
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -52,7 +53,7 @@ function AppContent() {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/booking" element={<BookingPage />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       {!isBookingPage && <Footer />}

@@ -1,7 +1,6 @@
 import { Quote } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SectionHeading, Reveal, Stars } from "@/components/ui";
-import { Mascot } from "@/components/PetMascot";
 import { TESTIMONIALS } from "@/lib/data";
 
 export function Testimonials() {
@@ -21,9 +20,9 @@ export function Testimonials() {
           <div className="card-bubble mx-auto flex max-w-2xl flex-col items-center gap-3 p-6 text-center">
             <Stars />
             <p className="font-display text-lg font-700 text-ink">{t("testi.comingSoon")}</p>
-            <div className="flex items-center gap-3 opacity-90">
-              <Mascot variant="dog" className="h-16 w-16" />
-              <Mascot variant="cat" className="h-16 w-16" delay={0.4} />
+            <div className="flex items-center gap-4 opacity-90 text-5xl select-none">
+              <span className="animate-bounce">🐶</span>
+              <span className="animate-bounce" style={{ animationDelay: "0.2s" }}>🐱</span>
             </div>
           </div>
         </Reveal>

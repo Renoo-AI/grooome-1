@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { CalendarHeart, MessageCircle, PawPrint } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Reveal } from "@/components/ui";
-import { Mascot } from "@/components/PetMascot";
 import { WHATSAPP_URL } from "@/lib/data";
 
 export function FinalCTA() {
@@ -19,8 +18,8 @@ export function FinalCTA() {
             <PawPrint className="pointer-events-none absolute -right-4 bottom-0 h-32 w-32 -rotate-12 fill-white/10" aria-hidden="true" />
 
             <div className="relative">
-              <div className="mb-6 flex justify-center">
-                <Mascot variant="dog" className="h-24 w-24 drop-shadow-2xl" />
+              <div className="mb-6 flex justify-center text-6xl select-none">
+                <span className="animate-float">🐶</span>
               </div>
               <h2 className="text-balance font-display text-4xl font-700 leading-tight text-white sm:text-5xl">
                 {t("cta.title")}

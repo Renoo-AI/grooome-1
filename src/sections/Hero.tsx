@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { motion, type Variants } from "framer-motion";
 import { CalendarHeart, PawPrint, ShieldCheck, Star, Sparkles } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Mascot } from "@/components/PetMascot";
 import { SceneDeco } from "@/components/Decor";
 import heroImg from "@/assets/hero.jpg";
 
@@ -134,11 +133,7 @@ export function Hero() {
           </motion.div>
 
           {/* little mascot peeking */}
-          <Mascot
-            variant="cat"
-            className="absolute -bottom-6 -left-4 hidden h-24 w-24 drop-shadow-xl sm:block"
-            delay={0.4}
-          />
+          <span className="absolute -bottom-6 -left-4 hidden text-6xl drop-shadow-lg sm:block animate-wiggle select-none" role="img" aria-label="Cat">🐱</span>
         </motion.div>
       </div>
     </section>

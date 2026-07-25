@@ -44,6 +44,7 @@ function ScrollManager() {
 function AppContent() {
   const location = useLocation();
   const isBookingPage = location.pathname === "/booking";
+  const isKnownRoute = ["/", "/services", "/booking"].includes(location.pathname);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -56,7 +57,7 @@ function AppContent() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      {!isBookingPage && <Footer />}
+      {!isBookingPage && isKnownRoute && <Footer />}
     </div>
   );
 }

@@ -34,10 +34,8 @@ export function Navbar() {
     <header className="sticky top-0 z-50 px-3 pt-3 sm:px-5">
       <nav
         className={cn(
-          "mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-[1.6rem] px-3 py-2.5 transition-all duration-300 border sm:px-4",
-          scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-soft border-white/40"
-            : "bg-white/80 backdrop-blur-md border-white/20"
+          "mx-auto flex max-w-6xl items-center justify-between gap-3 rounded-[1.6rem] px-3 py-2.5 transition-all duration-300 sm:px-4",
+          scrolled ? "bg-white/95 backdrop-blur-md border border-white/20 shadow-soft" : "bg-white/90 backdrop-blur-sm border border-white/10"
         )}
       >
         <Link to="/" aria-label="GroomMe Qatar home" className="shrink-0">

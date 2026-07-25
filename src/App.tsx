@@ -40,23 +40,32 @@ function ScrollManager() {
   return null;
 }
 
+function AppContent() {
+  const location = useLocation();
+  const isBookingPage = location.pathname === "/booking";
+
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Navbar />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/booking" element={<BookingPage />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </main>
+      {!isBookingPage && <Footer />}
+    </div>
+  );
+}
+
 export default function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
         <ScrollManager />
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<ServicesPage />} />
-              <Route path="/booking" element={<BookingPage />} />
-              <Route path="*" element={<Home />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+        <AppContent />
       </BrowserRouter>
     </LanguageProvider>
   );

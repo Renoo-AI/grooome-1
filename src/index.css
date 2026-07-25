@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+/* ============================================================
+   GROOMME QATAR — DESIGN SYSTEM
+   "Pet Storybook Premium" — cute, rounded, bubbly, trustworthy
+   ============================================================ */
+
+@theme {
+  /* ---- Brand palette (extracted from the logo) ---- */
+  --color-aqua: #9beaee; /* Main background */
+  --color-aqua-deep: #4fc7d1;
+  --color-aqua-soft: #d7f5f8;
+  --color-aqua-mist: #effbfc;
+
+  --color-maroon: #8a1538; /* Qatar Maroon — primary */
+  --color-maroon-dark: #6a0f2a;
+  --color-maroon-soft: #fbe5eb;
+
+  --color-pine: #007a3d; /* Green */
+  --color-pine-dark: #056330;
+  --color-pine-soft: #ddf0e5;
+
+  --color-ink: #111111; /* Black */
+  --color-cream: #fffdf9; /* warm white cards */
+  --color-sand: #fff3df; /* warm accent */
+  --color-honey: #ffb43d; /* playful accent */
+
+  /* ---- Fonts ---- */
+  --font-display: "Fredoka", "Baloo Bhaijaan 2", system-ui, sans-serif;
+  --font-body: "Nunito", "Tajawal", system-ui, sans-serif;
+
+  /* ---- Radii ---- */
+  --radius-blob: 2.2rem;
+
+  /* ---- Shadows ---- */
+  --shadow-bubble: 0 24px 50px -22px rgba(20, 70, 80, 0.35);
+  --shadow-soft: 0 14px 34px -18px rgba(20, 70, 80, 0.28);
+  --shadow-pop: 0 30px 60px -24px rgba(138, 21, 56, 0.4);
+
+  /* ---- Motion ---- */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-blink: blink 5s ease-in-out infinite;
+  --animate-wag: wag 1.8s ease-in-out infinite;
+  --animate-drift: drift 14s linear infinite;
+  --animate-wiggle: wiggle 2.5s ease-in-out infinite;
+  --animate-pop: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --animate-shimmer: shimmer 2.5s linear infinite;
+  --animate-rise: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+@keyframes wag {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(10deg); }
+}
+@keyframes drift {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(18px, -22px) rotate(10deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  70% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes rise {
+  0% { transform: translateY(26px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-ink);
+    background-color: var(--color-aqua);
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.75), transparent 38%),
+      radial-gradient(circle at 86% 12%, #c8f3f6 0%, transparent 42%),
+      radial-gradient(circle at 78% 82%, rgba(0, 122, 61, 0.1), transparent 45%),
+      linear-gradient(160deg, #effbfc 0%, #9beaee 55%, #bff0f3 100%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Arabic / RTL typography swap */
+  [dir="rtl"] {
+    font-family: "Tajawal", "Nunito", system-ui, sans-serif;
+  }
+  [dir="rtl"] .font-display {
+    font-family: "Baloo Bhaijaan 2", "Fredoka", system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--color-maroon);
+    color: #fff;
+  }
+
+  /* Cute custom scrollbar */
+  ::-webkit-scrollbar { width: 12px; height: 12px; }
+  ::-webkit-scrollbar-track { background: var(--color-aqua-soft); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-maroon);
+    border-radius: 999px;
+    border: 3px solid var(--color-aqua-soft);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-maroon);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* ============================================================
+   COMPONENTS / UTILITIES
+   ============================================================ */
+@layer components {
+  .gradient-mesh {
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.85), transparent 40%),
+      radial-gradient(circle at 90% 0%, #d7f5f8 0%, transparent 45%),
+      radial-gradient(circle at 70% 90%, rgba(0, 122, 61, 0.12), transparent 50%),
+      linear-gradient(155deg, #effbfc 0%, #aeeef1 100%);
+  }
+
+  .card-bubble {
+    background: var(--color-cream);
+    border-radius: var(--radius-blob);
+    box-shadow: var(--shadow-bubble);
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1.5px solid rgba(255, 255, 255, 0.7);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 0.9rem 1.6rem;
+    line-height: 1;
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 0.25s ease, background-color 0.25s ease;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  .btn:active { transform: scale(0.96); }
+
+  .btn-primary {
+    background: var(--color-maroon);
+    color: #fff;
+    box-shadow: 0 16px 30px -12px rgba(138, 21, 56, 0.7);
+  }
+  .btn-primary:hover {
+    background: var(--color-maroon-dark);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 22px 38px -12px rgba(138, 21, 56, 0.8);
+  }
+
+  .btn-secondary {
+    background: #fff;
+    color: var(--color-maroon);
+    box-shadow: var(--shadow-soft);
+    border: 1.5px solid rgba(138, 21, 56, 0.12);
+  }
+  .btn-secondary:hover {
+    transform: translateY(-3px) scale(1.02);
+    border-color: var(--color-maroon);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-ink);
+  }
+  .btn-ghost:hover { background: rgba(138, 21, 56, 0.08); }
+
+  .btn-pine {
+    background: var(--color-pine);
+    color: #fff;
+    box-shadow: 0 16px 30px -12px rgba(0, 122, 61, 0.6);
+  }
+  .btn-pine:hover {
+    background: var(--color-pine-dark);
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  /* Pills / chips */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+  }
+
+  .field-label {
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #5b4650;
+  }
+
+  .input {
+    width: 100%;
+    border-radius: 1rem;
+    border: 2px solid #e6f3f4;
+    background: #fff;
+    padding: 0.85rem 1rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--color-ink);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .input::placeholder { color: #aebcc0; font-weight: 600; }
+  .input:focus {
+    outline: none;
+    border-color: var(--color-aqua-deep);
+    box-shadow: 0 0 0 4px rgba(79, 199, 209, 0.25);
+  }
+
+  .eyebrow {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+  }
+}
+
+@layer utilities {
+  /* numeric font-weight helpers (used across the app) */
+  .font-400 { font-weight: 400; }
+  .font-500 { font-weight: 500; }
+  .font-600 { font-weight: 600; }
+  .font-700 { font-weight: 700; }
+  .font-800 { font-weight: 800; }
+  .font-900 { font-weight: 900; }
+
+  /* decorative paw dotted texture */
+  .paw-pattern {
+    background-image: radial-gradient(rgba(138, 21, 56, 0.07) 2px, transparent 2px);
+    background-size: 26px 26px;
+  }
+  .text-shadow-soft {
+    text-shadow: 0 2px 14px rgba(255, 255, 255, 0.6);
+  }
+  .text-stroke-white {
+    -webkit-text-stroke: 2px #fff;
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
